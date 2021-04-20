@@ -1,0 +1,13 @@
+Bootstrap: docker
+From: ubuntu:16.04
+
+%post
+    apt-get -y update
+    apt-get -y install tabix
+
+%environment
+    export LC_ALL=C
+    export PATH=/usr/bin:$PATH
+
+%runscript
+    tabix

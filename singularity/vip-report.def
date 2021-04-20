@@ -1,0 +1,12 @@
+Bootstrap: docker
+From: openjdk:11.0.7-jre-slim
+ 
+%post 
+        apt update
+	apt-get -y install wget
+	mkdir /vip/
+	wget -P /vip/ https://github.com/molgenis/vip-report/releases/download/v1.9.0/vcf-report.jar 
+
+ 
+%runscript 
+	java -jar /vip/vcf-report.jar

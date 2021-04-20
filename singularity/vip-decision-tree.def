@@ -1,0 +1,11 @@
+Bootstrap: docker
+From: openjdk:11.0.7-jre-slim
+ 
+%post 
+        apt update
+	apt-get -y install wget
+	mkdir /vip/
+	wget -P /vip/ https://github.com/molgenis/vip-decision-tree/releases/download/v0.0.3/vcf-decision-tree.jar 
+	echo '{"rootNode":"CAP","nodes":{"CAP":{"type":"BOOL","description":"Capice<0.5","query":{"field":"INFO/CAP","operator":"<","value":0.5},"outcomeTrue":{"nextNode":"exit_B"},"outcomeFalse":{"nextNode":"exit_P"},"outcomeMissing":{"nextNode":"exit_U"}},"exit_B":{"type":"LEAF","class":"Benign"},"exit_U":{"type":"LEAF","class":"Unknown"},"exit_P":{"type":"LEAF","class":"Pathogenic"}}}' > /vip/default.json	
+%runscript 
+	java -jar /vip/vcf-decision-tree.jar

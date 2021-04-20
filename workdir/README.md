@@ -1,0 +1,1 @@
+The pipeline expects to find the singularity images here.
