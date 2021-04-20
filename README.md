@@ -1,11 +1,10 @@
 # Nextflow and Singularity PoC for the VIP project
-Proof of concept for the vip pipeline with nextflow and singularity.
 
-This poc will take an non compressed input vcf and:
+This proof of concept will take an non compressed input vcf and:
 - compress it
 - index it
 - split it per chromsome in to separate vcf file
-- run the vip-decision-tree on the per-chromsome vcf's
+- run the vip-decision-tree on the per-chromsome vcf's (Parallel)
 - merge the result back together
 - run the vip-report on the merged vcf
 
@@ -40,4 +39,4 @@ If you do not have slurm installed:
 ```
 nextflow ./nextflow/vip.nf -c ./nextflow/vip_noslurm.config --input ./data/patient_mother_father.vcf
 ```
-The nextflow output will point you to the generated report.
+The nextflow output will point you to the generated report html file.
