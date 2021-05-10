@@ -25,9 +25,11 @@ For this PoC you have 2 options:
 sudo singularity build ./workdir/tabix.sif ./singularity/tabix.def
 sudo singularity build ./workdir/vip-decision-tree.sif ./singularity/vip-decision-tree.def
 sudo singularity build ./workdir/vip-report.sif ./singularity/vip-report.def
+sudo singularity build ./workdir/bcftools.sif ./singularity/bcftools.def
+
 ```
 
-2) Download the images from [here](https://drive.google.com/file/d/1vCIp9K5pq4gPDRS_j6LOAceArXrx_tcy/view?usp=sharing).
+2) Download the images from [here](https://drive.google.com/file/d/1_CJOtKUF1-Fgxp0_KvHI8kfa4pxynrpI/view?usp=sharing).
 The tar.gz file should be extracted in the "/workdir/" folder of this project.
 
 # Running the pipeline
