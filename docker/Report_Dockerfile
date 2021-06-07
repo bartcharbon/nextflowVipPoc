@@ -1,0 +1,6 @@
+FROM openjdk:11.0.7-jre-slim
+
+RUN apt-get -y update
+RUN apt-get -y install wget
+RUN mkdir /vip/
+RUN wget -P /vip/ https://github.com/molgenis/vip-report/releases/download/v1.9.0/vcf-report.jar

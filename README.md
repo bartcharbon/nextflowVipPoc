@@ -31,7 +31,16 @@ sudo singularity build ./workdir/bcftools.sif ./singularity/bcftools.def
 2) Download the images from [here](https://drive.google.com/file/d/1Cmid5AHQ5RFMWyj-Yy5Ajjp3uOKMB2JK/view?usp=sharing).
 The tar.gz file should be extracted in the "/workdir/" folder of this project.
 
+or if you prefer to use Docker:
+Download the [tar file](https://drive.google.com/file/d/1WJLBKtCphU8LUvRFRCQLipqMbnC5egRF/view?usp=sharing)
+
+And load the images with docker:
+```
+docker load --input /path/to/vip_docker.tar
+```
+
 # Running the pipeline
+##singularity
 If you have slurm installed:
 ```
 nextflow ./nextflow/vip.nf -c ./nextflow/vip.config --input ./data/patient_mother_father.vcf
@@ -40,4 +49,21 @@ If you do not have slurm installed:
 ```
 nextflow ./nextflow/vip.nf -c ./nextflow/vip_noslurm.config --input ./data/patient_mother_father.vcf
 ```
+##docker
+If you have slurm installed:
+```
+nextflow ./nextflow/vip.nf -c ./nextflow/vip_docker.config --input ./data/patient_mother_father.vcf
+```
+If you do not have slurm installed:
+```
+nextflow ./nextflow/vip.nf -c ./nextflow/vip_docker_noslurm.config --input ./data/patient_mother_father.vcf
+```
+##singularity with BCFTools docker image
+```
+nextflow ./nextflow/vip.nf -c ./nextflow/vip_docker_singularity_hybrid.config --input ./data/patient_mother_father.vcf
+```
+
+
 The nextflow output will point you to the generated report html file.
+
+Notes on the experiences can be found [here](https://docs.google.com/presentation/d/1oUOcD0nf8huMibxJDVgOkItU40Ra4X6GaIXuXDXsG9g/edit#slide=id.gdeef0bacde_0_30).
